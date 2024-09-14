@@ -1,6 +1,6 @@
 import pygame
 from config import screen_width, screen_height
-
+#comments
 class Home:
     def __init__(self, screen):
         # Initialiser les paramètres du jeu
