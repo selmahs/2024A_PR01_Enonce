@@ -41,9 +41,28 @@ class PacMan:
         self.screen.blit(rotated_image, (screen_x, screen_y))
 
     def move(self):
+
         if self.direction:
-            pass
+            x,y = 0,0 
+            if self.direction == (0,1):
+                y = 1
+            elif self.direction == (0,-1):
+                y =-1
+            elif self.direction == (1,0):
+                x= 1
+            elif self.direction == (-1,0):
+                x=-1
+            new_x = self.x + x   
+            new_y = self.y + y
         
+
+            if self.board[new_y][new_x] == 0:
+                 self.x = new_x
+                 self.y = new_y
+                 screen_x, screen_y = grid_to_screen([new_x, new_y],[self.size_grid, self.size_grid])
+                 self.rect.topleft = (screen_x, screen_y)
+
+
             # TODO: Extraire la direction de déplacement à partir de l'attribut `self.direction`.
             
             # TODO: Calculer les nouvelles coordonnées X et Y en fonction de la direction

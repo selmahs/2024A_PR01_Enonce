@@ -29,7 +29,19 @@ class Ghost:
     def move(self):
         # Si le fantôme n'est pas "mort", commencez le calcul de sa prochaine position
         if not self.dead:
-            pass
+            next_pos = [self.pos[0]+self.direction[0]*self.speed, self.pos[1]+self.direction[1]*self.speed]
+            
+            next_x = next_pos[0]
+            next_y = next_pos[1]
+            
+            next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
+           
+            if not self.check_collision(next_rect):
+                self_pos = next_pos
+            else:
+                self.change_direction
+                
+
             # TODO: Calculer la prochaine position en fonction de la direction et de la vitesse
             # Utilisez `self.direction` pour déterminer la direction et `self.speed` pour le déplacement.
             # La formule pour calculer la prochaine position est la suivante:
@@ -74,9 +86,9 @@ class Ghost:
 
     def change_direction(self):
         # TODO: Créer une liste de toutes les directions possibles pour le fantôme (gauche, droite, haut, bas)
-
+                directions =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
         # TODO: Mélanger aléatoirement les directions pour simuler un choix aléatoire avec `random.shuffle()`
-
+                random.shuffle(directions)
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
 
