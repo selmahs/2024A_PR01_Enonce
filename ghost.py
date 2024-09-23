@@ -86,19 +86,21 @@ class Ghost:
 
     def change_direction(self):
         # TODO: Créer une liste de toutes les directions possibles pour le fantôme (gauche, droite, haut, bas)
-                directions =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
+            directions =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
         # TODO: Mélanger aléatoirement les directions pour simuler un choix aléatoire avec `random.shuffle()`
-                random.shuffle(directions)
+            random.shuffle(directions)
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
-
-            
+            for direction in directions:    
+                next_pos = [self.pos[0] + direction[0] * self.speed, self.pos[1] + direction[1] * self.speed]
             #ßCréer un rectangle représentant cette nouvelle position
             #next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
-            
+                next_rect = pygame.Rect(next_pos[0], next_pos[1], GHOST_SIZE[0], GHOST_SIZE[1])
             # TODO: Vérifier si cette direction entraîne une collision avec un mur en utilisant `self.check_collision()`
+                if not self.check_collision(next_rect):
                 # TODO: Si aucune collision n'est détectée, définir cette direction comme la nouvelle direction du fantôme avec `self.set_direction()` et sortir de la boucle
-                return  # Sortir de la méthode une fois la direction changée
+                    self.direction(directions)  
+            return  # Sortir de la méthode une fois la direction changée
 
     def stop(self):
         self.direction = Direction.STOP
