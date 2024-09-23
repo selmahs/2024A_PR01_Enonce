@@ -52,6 +52,7 @@ class PacMan:
                 x= 1
             elif self.direction == (-1,0):
                 x=-1
+            
             new_x = self.x + x   
             new_y = self.y + y
         

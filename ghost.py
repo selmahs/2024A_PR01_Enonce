@@ -88,7 +88,7 @@ class Ghost:
 
     def change_direction(self):
         # TODO: Créer une liste de toutes les directions possibles pour le fantôme (gauche, droite, haut, bas)
-            direction =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
+            direction =[Direction.LEFT, Direction.RIGHT,Direction.UP,Direction.DOWN]
 
         # TODO: Mélanger aléatoirement les directions pour simuler un choix aléatoire avec `random.shuffle()`
             random.shuffle(direction)
@@ -102,7 +102,7 @@ class Ghost:
             # TODO: Vérifier si cette direction entraîne une collision avec un mur en utilisant `self.check_collision()`
                 if not self.check_collision(next_rect):
                 # TODO: Si aucune collision n'est détectée, définir cette direction comme la nouvelle direction du fantôme avec `self.set_direction()` et sortir de la boucle
-                    self.directionBis = directionBis
+                    self.direction = directionBis
             return  # Sortir de la méthode une fois la direction changée
 
     def stop(self):
