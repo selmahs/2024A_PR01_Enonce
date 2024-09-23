@@ -37,7 +37,9 @@ class Ghost:
             next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
            
             if not self.check_collision(next_rect):
-                self_pos = next_pos
+                self.pos[0] = next_x
+                self.pos[1] = next_y
+                self.rect.topleft= (self.pos[0],self.pos[1])
             else:
                 self.change_direction
                 
@@ -86,12 +88,13 @@ class Ghost:
 
     def change_direction(self):
         # TODO: Créer une liste de toutes les directions possibles pour le fantôme (gauche, droite, haut, bas)
-            directions =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
+            direction =[Direction.UP,Direction.DOWN,Direction.LEFT, Direction.RIGHT]
+
         # TODO: Mélanger aléatoirement les directions pour simuler un choix aléatoire avec `random.shuffle()`
-            random.shuffle(directions)
+            random.shuffle(direction)
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
-            for direction in directions:    
+            for directionBis in direction:    
                 next_pos = [self.pos[0] + direction[0] * self.speed, self.pos[1] + direction[1] * self.speed]
             #ßCréer un rectangle représentant cette nouvelle position
             #next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
@@ -99,7 +102,7 @@ class Ghost:
             # TODO: Vérifier si cette direction entraîne une collision avec un mur en utilisant `self.check_collision()`
                 if not self.check_collision(next_rect):
                 # TODO: Si aucune collision n'est détectée, définir cette direction comme la nouvelle direction du fantôme avec `self.set_direction()` et sortir de la boucle
-                    self.direction(directions)  
+                    self.directionBis = directionBis
             return  # Sortir de la méthode une fois la direction changée
 
     def stop(self):
