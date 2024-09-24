@@ -93,8 +93,8 @@ class Ghost:
         # TODO: Parcourir chaque direction et vérifier si elle est valide (pas de collision avec un mur)
             # TODO: Calculer la prochaine position du fantôme en fonction de la direction
         for directionBis in direction:    
-            next_x =self.pos[0] + directionBis[0] 
-            next_y = self.pos[1] + directionBis[1] 
+            next_x =self.pos[0] + directionBis[0] * self.speed
+            next_y = self.pos[1] + directionBis[1] *self.speed
             #ßCréer un rectangle représentant cette nouvelle position
             #next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
             next_rect = pygame.Rect(next_x, next_y, GHOST_SIZE[0], GHOST_SIZE[1])
