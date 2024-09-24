@@ -17,7 +17,7 @@ class PacMan:
         self.lives = 3
         self.screen_pos = grid_to_screen(grid_pos=[self.x, self.y], tile_size=[self.size_grid, self.size_grid])
         self.rect = pygame.Rect(self.screen_pos, PACMAN_SIZE)
-        
+       
     def draw(self):
         # Load the Pac-Man image
         pacman_image = pygame.image.load('assets/images/pacman.png')
@@ -58,10 +58,10 @@ class PacMan:
         
 
             if self.board[new_y][new_x] == 0:
-                 self.x = new_x
-                 self.y = new_y
-                 screen_x, screen_y = grid_to_screen([new_x, new_y],[self.size_grid, self.size_grid])
-                 self.rect.topleft = (screen_x, screen_y)
+                self.x = new_x
+                self.y = new_y
+                screen_x, screen_y = grid_to_screen([new_x, new_y],[self.size_grid, self.size_grid])
+                self.rect.topleft = (screen_x, screen_y)
 
 
             # TODO: Extraire la direction de déplacement à partir de l'attribut `self.direction`.

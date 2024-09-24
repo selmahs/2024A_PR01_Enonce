@@ -95,16 +95,16 @@ class Game:
     def handle_keypress(self, event):
         
         if event.key == pygame.K_RIGHT:
-            if not self.check_collision((1, 0)):
+            if self.check_collision((1, 0)):
                 self.pacman.set_direction((1, 0))
         if event.key == pygame.K_LEFT:
-            if not self.check_collision((-1,0)):
+            if self.check_collision((-1,0)):
                 self.pacman.set_direction((-1,0))
         if event.key == pygame.K_UP:
-            if not self.check_collision((0,-1)):
+            if self.check_collision((0,-1)):
                 self.pacman.set_direction((0,-1))
         if event.key == pygame.K_DOWN:
-            if not self.check_collision((0,1)):
+            if self.check_collision((0,1)):
                 self.pacman.set_direction((0,1))
        
         # TODO: Vérifiez si la touche pressée est la flèche droite avec event.key == pygame.K_RIGHT
@@ -125,7 +125,7 @@ class Game:
                 
 
     def check_collision(self, direction):
-        pass
+        
         # TODO: Extraire les coordonnées de déplacement de la direction (dx, dy)
         dx , dy = direction
         # TODO: Calculer la nouvelle position de Pac-Man après le déplacement (new_x, new_y) avec la formule new_x = self.pacman.x + dx
@@ -133,9 +133,9 @@ class Game:
         new_y = self.pacman.y + dy
         # TODO: Vérifier si la nouvelle position est un chemin valide ou un mur
         # Utiliser la grille (`self.board`) pour déterminer si la case est un chemin (0) ou un mur (1). return True si c'est un chemin, False si c'est un mur.
-        if self.board[new_x][new_y]==0:
+        if self.board[new_y][new_x]==0:
             return True
-        elif self.board[new_x][new_y]==1:
+        else:
             return False
         
     def update(self):
