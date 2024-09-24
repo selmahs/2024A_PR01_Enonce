@@ -124,6 +124,7 @@ class Game:
                 # TODO: Si le déplacement est possible, définissez la nouvelle direction de Pac-Man vers le bas
                 
 
+
     def check_collision(self, direction):
         
         # TODO: Extraire les coordonnées de déplacement de la direction (dx, dy)
@@ -233,3 +234,4 @@ if __name__ == "__main__":
 
     pygame.quit()
     sys.exit()
+    
